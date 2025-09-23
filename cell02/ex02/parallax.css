@@ -1,0 +1,48 @@
+/* General Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Parallax effect base */
+.parallax {
+    height: 100vh;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    color: white;
+}
+
+/* Image 1 background */
+.image1 {
+    background-image: url('image1.jpg'); /* แก้เป็นชื่อไฟล์รูปภาพที่คุณใช้ */
+}
+
+/* Image 2 background */
+.image2 {
+    background-image: url('image2.jpg'); /* แก้เป็นชื่อไฟล์รูปภาพที่คุณใช้ */
+}
+
+/* Centered text for parallax sections */
+.centered-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 1rem 2rem;
+    border-radius: 10px;
+}
+
+/* Black block content section */
+.content-block {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+    font-size: 1.5rem;
+}
