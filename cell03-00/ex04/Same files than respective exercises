@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Balloon</title>
+    <style>
+        #balloon {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            border-radius: 50%;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="balloon"></div>
+
+    <script>
+        const balloon = document.getElementById("balloon");
+        let size = 200;
+        let colors = ["red", "green", "blue"];
+        let colorIndex = 0;
+
+        balloon.addEventListener("click", () => {
+            size += 10;
+            colorIndex = (colorIndex + 1) % colors.length;
+
+            if (size > 420) {
+                size = 200;
+                colorIndex = 0;
+            }
+
+            updateBalloon();
+        });
+
+        balloon.addEventListener("mouseleave", () => {
+            size = Math.max(200, size - 5);
+            colorIndex = (colorIndex - 1 + colors.length) % colors.length;
+            updateBalloon();
+        });
+
+        function updateBalloon() {
+            balloon.style.width = size + "px";
+            balloon.style.height = size + "px";
+            balloon.style.backgroundColor = colors[colorIndex];
+        }
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>It's over 9000</title>
+    <script>
+        function calculate() {
+            let left = document.getElementById("left").value;
+            let right = document.getElementById("right").value;
+            let op = document.getElementById("op").value;
+
+            let a = parseInt(left, 10);
+            let b = parseInt(right, 10);
+
+            if (isNaN(a) || isNaN(b) || a < 0 || b < 0) {
+                alert("Error :(");
+                return;
+            }
+
+            if ((op === "/" || op === "%") && b === 0) {
+                alert("It's over 9000!");
+                console.log("It's over 9000!");
+                return;
+            }
+
+            let result;
+            switch(op) {
+                case "+": result = a + b; break;
+                case "-": result = a - b; break;
+                case "*": result = a * b; break;
+                case "/": result = a / b; break;
+                case "%": result = a % b; break;
+            }
+
+            alert(result);
+            console.log(result);
+        }
+
+        // alert ทุก ๆ 30 วินาที
+        setInterval(() => {
+            alert("Please, use me...");
+        }, 30000);
+    </script>
+</head>
+<body>
+    <input type="text" id="left">
+    <select id="op">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+        <option value="%">%</option>
+    </select>
+    <input type="text" id="right">
+    <input type="button" value="Try me!" onclick="calculate()">
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Timer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+    #time {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+    button {
+      font-size: 18px;
+      padding: 10px 20px;
+      margin: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="time">0</div>
+  <button onclick="startTimer()">Start</button>
+  <button onclick="stopTimer()">Stop</button>
+  <button onclick="resetTimer()">Reset</button>
+
+  <script>
+    let timer;
+    let count = 0;
+
+    function startTimer() {
+      if (!timer) {
+        timer = setInterval(() => {
+          count++;
+          document.getElementById("time").textContent = count;
+        }, 1000);
+      }
+    }
+
+    function stopTimer() {
+      clearInterval(timer);
+      timer = null;
+    }
+
+    function resetTimer() {
+      clearInterval(timer);
+      timer = null;
+      count = 0;
+      document.getElementById("time").textContent = count;
+    }
+  </script>
+</body>
+</html>
